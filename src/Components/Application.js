@@ -4,6 +4,7 @@ import axios from 'axios';
 import * as yup from 'yup';
 import Schema from '../Schema';
 import Pizzas from './Pizza';
+import { Route, Link } from 'react-router-dom'
 
 const initialOrders = []
 const initialDisabled = true
@@ -88,6 +89,14 @@ function Application(){
     return (
         <div className='Application'>
             <h1>Lambda Eats</h1>
+            <Link to='/'>
+                Home
+            </Link>
+            <Link to='/pizza'>
+                Order
+            </Link>
+                <Route exact path='/pizza'>
+                    <h2>Order</h2>
                 <Form
                     values={formValues}
                     errors={formErrors}
@@ -95,7 +104,10 @@ function Application(){
                     submit={formSubmit}
                     disabled={disabled}
                 />     
+                </Route>
                 <div className='user-wrapper'>
+                    <Route exact path='/'>
+                        <h2>Home Page</h2>
                     {orders.map((order) => {
                         return <Pizzas 
                             key={order.id}
@@ -110,6 +122,7 @@ function Application(){
                             instructions={order.instructions}
                         />
                     })}
+                    </Route>
                 </div>           
         </div>
     )
