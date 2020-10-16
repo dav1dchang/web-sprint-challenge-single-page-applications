@@ -69,13 +69,13 @@ function Application(){
         const newOrder = {
             name: formValues.name.trim(),
             size: formValues.size.trim(),
-            toppings: ['pepperoni', 'bellpepper', 'sausage', 'mushroom', 'onion'].filter((top) => formValues[top])
+            toppings: ['pepperoni', 'bellpepper', 'sausage', 'mushroom', 'onion'].filter((top) => formValues[top]),
             // pepperoni: formValues.pepperoni,
             // bellpepper: formValues.bellpepper,
             // sausage: formValues.sausage,
             // mushroom: formValues.mushroom,
             // onion: formValues.onion,
-            // instructions: formValues.instructions,
+            instructions: formValues.instructions,
         }
         postNewOrder(newOrder)
     }
@@ -89,10 +89,10 @@ function Application(){
     return (
         <div className='Application'>
             <h1>Lambda Eats</h1>
-            <Link to='/'>
+            <Link id='home' to='/'>
                 Home
             </Link>
-            <Link to='/pizza'>
+            <Link id='order' to='/pizza'>
                 Order
             </Link>
                 <Route exact path='/pizza'>

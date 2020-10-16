@@ -13,9 +13,12 @@ describe('Pizza App', () => {
     const onionInput = () => cy.get('input[name="onion"]')
     const instructionsInput = () => cy.get('input[name="instructions"]')
     const submitForm = () => cy.get('button[id="submit"]')
+    const orderButton = () => cy.get('a[id="order"]')
+    const homeButton = () => cy.get('a[id="home"]')
 
     describe('Filling out text inputs & then testing', () => {
         it('can type inside the name input', () => {
+            orderButton().click()
             nameInput()
             .should('have.value', '')
             .type('Jose Canseco')
@@ -23,6 +26,7 @@ describe('Pizza App', () => {
         })
 
         it('can type inside the instructions input', () => {
+            orderButton().click()
             instructionsInput()
             .should('have.value', '')
             .type('show me the money')
@@ -32,6 +36,7 @@ describe('Pizza App', () => {
 
     describe('Clicking the checkboxes', () => {
         it('can click the checkboxes', () => {
+            orderButton().click()
             pepperoniInput().click().should('be.checked')
             bellpepperInput().click().should('be.checked')
             sausageInput().click().should('be.checked')
@@ -42,6 +47,7 @@ describe('Pizza App', () => {
 
     describe('Can fill out the form & submit', () => {
         it('can fill out the form', () => {
+            orderButton().click()
             nameInput().type('Alex Rodriguez')
             sizeInput().select('medium')
             pepperoniInput().click()
@@ -51,6 +57,7 @@ describe('Pizza App', () => {
             onionInput().click()
             submitForm().click()
 
+            homeButton().click()
             cy.contains(/Alex Rodriguez/).should('exist')
             cy.contains(/medium/).should('exist')
             cy.contains(/pepperoni/).should('exist')
