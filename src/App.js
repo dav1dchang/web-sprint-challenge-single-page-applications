@@ -1,11 +1,13 @@
-import React from "react";
+import React from 'react';
+import Application from './Components/Application'
+import { render } from 'react-dom'
+
 
 const App = () => {
   return (
-    <>
-      <h1>Lambda Eats</h1>
-      <p>You can remove this code and create your own header</p>
-    </>
+    <div>
+        <Application/>
+    </div>
   );
 };
 export default App;
